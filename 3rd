@@ -1,0 +1,46 @@
+Imagine you work for amazon, what is the Meta data information you will store for an item in your Database. For E.g. the item is a shirt, once you have stored the Meta
+data how will use the information?
+
+
+Approach:
+
+Metadata: 
+         It refers “data about data”, providing context and additional information itself, rather than the context of the information. 
+         It will be like a label that describes a file or an instruction manual for understanding a data.
+         
+Characterictics:
+               1. Provide Description: It describes the data such as its format(image, document etc)
+               2. Improves Discoverability: Metadata helps users find relevant information by categorization tagging data for easier search and retrieval.
+
+Product Information
+        Unique Identifer :  Identifier for the product on Amazon
+        Title: Product Name[Eg : Men’s Shirt]
+        Description :  Details of the product with features and color and type
+        Style: Design Details 
+
+Inventory Infromation
+          Stock:  Current Availability of the Product[In Stock, Out Of Stock]
+         Price: Amount of the Product
+         Sale Price: [Optional] either the Product is on Discount.
+         Center: Location where the product is stored.
+
+Additional Information
+           Images, Rating, Search Keywords.
+
+How Amazon Use this Information
+           1.	Product Page Display: Product Details, Description and Images
+           2.	Search Functionality : Improve product discover through relevant keywords and Categorizations.
+           3.	Pricing: Analyze competitor pricing and adjust prices accordingly
+           4.	Customer Liking: Understand customer preference and buying habits to improve product selection and user experience
+           5.	Personalization : Recommend product based on individual customers past purchase and browsing behavior.
+
+           
+
+MySql Creating Table:
+
+Create table Product{
+Id Int PRIMARY KEY AUTO_INCREMENT,
+Title VARCHAR(500),
+DESCRIPTION VARCHAR(500),
+Style VARCHAR(500)
+};
