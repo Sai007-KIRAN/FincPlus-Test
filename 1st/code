@@ -1,0 +1,38 @@
+// Write a special cipher that is a combination of Caesar’s cipher followed by a simple RLE. The function should receive a string and the rotation number as parameters.
+// Input: special Cipher(“AABCCC”, 3) Output: D2EF3
+
+Code:
+
+import java.util.*;
+class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String alpha = sc.nextLine();
+        int num = sc.nextInt();
+        char[] cipher = new char[alpha.length()];
+        for (int i = 0; i < alpha.length(); i++){
+            char chr = alpha.charAt(i);
+            cipher[i] = (char) ((chr - 'A' + num) % 26 + 'A');
+        }
+        int count = 1;
+        StringBuilder compress = new StringBuilder();
+        for (int i = 1; i < cipher.length; i++){
+            if (cipher[i] == cipher[i - 1]){
+                count++;
+            } else{
+                compress.append(cipher[i - 1]).append(count);
+                count = 1;
+            }
+        }
+        compress.append(cipher[cipher.length - 1]).append(count);
+        String C = compress.toString();
+        for(int i = 0; i < C.length(); i++){
+            if(C.charAt(i) == '1'){
+                continue;
+            }else{
+                System.out.print(C.charAt(i));
+            }
+            }
+            System.out.println();
+    }
+}
