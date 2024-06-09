@@ -1,0 +1,39 @@
+// Write a program that finds the most optimized set of 6 units to shop with for values
+// fewer than 100. Example: Units used are 1, 2, 5, 10, 20, 50 
+// 1: 1 (1 unit used) 
+// 2: 2 (1 unit used) 
+// 3: 1+2 (2 units used) 
+// 4: 2+2 (2 units used) ... 
+// 98: 1+2+5+20+20+50 (6 units used) 
+// 99: 2+2+5+20+20+50 (6 units used) 
+// AVG of units = 3.4
+
+
+import java.util.Arrays;
+class OptimizedUnits {
+    public static void main(String[] args) {
+        int[] units = {1, 2, 5, 10, 20, 50};
+        int max = 99;
+        int[] dp = new int[max + 1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[0] = 0;
+
+        for (int i = 1; i <= max; i++) {
+            int c = 0;
+            for (int unit : units) {
+                if (i >= unit && dp[i - unit] != Integer.MAX_VALUE) {
+                    dp[i] = Math.min(dp[i], dp[i - unit] + 1);
+                }
+            }
+        }
+        
+        int totalUnitsUsed = 0;
+        for (int i = 1; i <= max; i++) {
+            System.out.println(i + " : " + dp[i] + " Units");
+            totalUnitsUsed += dp[i];
+        }
+        double averageUnitsUsed = (double) totalUnitsUsed / max;
+        System.out.println();
+        System.out.printf("AVG : %.1f\n", averageUnitsUsed);
+    }
+}
