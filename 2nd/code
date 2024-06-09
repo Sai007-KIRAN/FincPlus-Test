@@ -9,11 +9,13 @@
 // AVG of units = 3.4
 
 
-import java.util.Arrays;
-class OptimizedUnits {
+import java.util.*;
+
+class Units {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         int[] units = {1, 2, 5, 10, 20, 50};
-        int max = 99;
+        int max = sc.nextInt();
         int[] dp = new int[max + 1];
         Arrays.fill(dp, Integer.MAX_VALUE);
         dp[0] = 0;
@@ -26,7 +28,6 @@ class OptimizedUnits {
                 }
             }
         }
-        
         int totalUnitsUsed = 0;
         for (int i = 1; i <= max; i++) {
             System.out.println(i + " : " + dp[i] + " Units");
